@@ -47,20 +47,50 @@
             padding: 20px;
             margin: 20px 0;
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #2c3e50;
-            color: white;
-            text-decoration: none;
+        .dropdown {
+            margin-bottom: 15px;
+        }
+        .dropdown-header {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
             border-radius: 5px;
-            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .dropdown-header:hover {
+            background: #e9ecef;
+        }
+        .dropdown-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 0 0 5px 5px;
+            margin-top: -5px;
+        }
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .dropdown-header::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+        .dropdown.active .dropdown-header::after {
+            transform: rotate(180deg);
         }
     </style>
+    <script>
+        function toggleDropdown(element) {
+            element.parentElement.classList.toggle('active');
+        }
+    </script>
 </head>
 <body>
     <h1>Chamba Privacy Policy</h1>
-    <p class="last-updated">Last Updated: March 19, 2024</p>
+    <p class="last-updated">Last Updated: June 13, 2024</p>
 
     <div class="section">
         <h2>For Users in the United States</h2>
@@ -73,87 +103,127 @@
         <h2>Our Policy On Selling and Sharing Data</h2>
         <p>Laws in California and other states give users in the state the right to opt out of the "sale" or "sharing" of their personal information. "Sale" refers to the disclosure of personal information to a third party in exchange for money or other value. "Share" refers to the disclosure of personal information to a third party for purposes of targeted advertising.</p>
 
-        <p>Chamba discloses user personal information to third parties to enable personalized advertising on apps, websites or other properties owned by Chamba or other companies. Such disclosures may be considered "sales" or "sharing" of personal information under the laws described above. Users in the United States may opt-out of these below.</p>
+        <p>Chamba discloses user personal information to third parties to enable personalized advertising on apps, websites or other properties owned by Chamba or other companies. Such disclosures may be considered "sales" or "sharing" of personal information under the laws described above.</p>
 
         <p>If you opt out, Chamba will not disclose your personal information to third parties for purposes of targeted advertising.</p>
-
-        <a href="#" class="button">Proceed to Opt-Out</a>
     </div>
 
     <div class="section">
         <h2>U.S. User Data Rights</h2>
         
-        <h3>What personal data does Chamba collect and how do we use it?</h3>
-        <ul>
-            <li><strong>Account Information:</strong>
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                What personal data does Chamba collect and how do we use it?
+            </div>
+            <div class="dropdown-content">
                 <ul>
-                    <li>Email address</li>
-                    <li>Full name</li>
-                    <li>Profile picture (optional)</li>
-                    <li>Phone number (optional)</li>
+                    <li><strong>Account Information:</strong>
+                        <ul>
+                            <li>Email address</li>
+                            <li>Full name</li>
+                            <li>Profile picture (optional)</li>
+                            <li>Phone number (optional)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Location Data:</strong>
+                        <ul>
+                            <li>Current location (to find nearby services)</li>
+                            <li>Saved locations (for quick booking)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Usage Data:</strong>
+                        <ul>
+                            <li>Booking history</li>
+                            <li>Service preferences</li>
+                            <li>App interaction patterns</li>
+                            <li>Search history</li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-            <li><strong>Location Data:</strong>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                What rights do users in the United States have?
+            </div>
+            <div class="dropdown-content">
                 <ul>
-                    <li>Current location (to find nearby services)</li>
-                    <li>Saved locations (for quick booking)</li>
+                    <li>Right to know what personal information is collected</li>
+                    <li>Right to know if personal information is sold or disclosed</li>
+                    <li>Right to say no to the sale of personal information</li>
+                    <li>Right to access your personal information</li>
+                    <li>Right to request deletion of your personal information</li>
+                    <li>Right to equal service and price</li>
                 </ul>
-            </li>
-            <li><strong>Usage Data:</strong>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                How do I exercise my rights?
+            </div>
+            <div class="dropdown-content">
+                <p>You can exercise your rights by:</p>
                 <ul>
-                    <li>Booking history</li>
-                    <li>Service preferences</li>
-                    <li>App interaction patterns</li>
-                    <li>Search history</li>
+                    <li>Using our Privacy Center</li>
+                    <li>Contacting our support team</li>
+                    <li>Submitting a request through our app</li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
 
-        <h3>What rights do users in the United States have?</h3>
-        <ul>
-            <li>Right to know what personal information is collected</li>
-            <li>Right to know if personal information is sold or disclosed</li>
-            <li>Right to say no to the sale of personal information</li>
-            <li>Right to access your personal information</li>
-            <li>Right to request deletion of your personal information</li>
-            <li>Right to equal service and price</li>
-        </ul>
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                How will Chamba verify my identity?
+            </div>
+            <div class="dropdown-content">
+                <p>We verify your identity by:</p>
+                <ul>
+                    <li>Matching information you provide with our records</li>
+                    <li>Requiring additional verification for sensitive requests</li>
+                    <li>Using secure authentication methods</li>
+                </ul>
+            </div>
+        </div>
 
-        <h3>How do I exercise my rights?</h3>
-        <p>You can exercise your rights by:</p>
-        <ul>
-            <li>Using our Privacy Center</li>
-            <li>Contacting our support team</li>
-            <li>Submitting a request through our app</li>
-        </ul>
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                Can an authorized agent submit a request on my behalf?
+            </div>
+            <div class="dropdown-content">
+                <p>Yes, you can authorize someone to make a request on your behalf. The authorized agent must provide:</p>
+                <ul>
+                    <li>Written permission from you</li>
+                    <li>Verification of their identity</li>
+                    <li>Verification of your identity</li>
+                </ul>
+            </div>
+        </div>
 
-        <h3>How will Chamba verify my identity?</h3>
-        <p>We verify your identity by:</p>
-        <ul>
-            <li>Matching information you provide with our records</li>
-            <li>Requiring additional verification for sensitive requests</li>
-            <li>Using secure authentication methods</li>
-        </ul>
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                Can I submit an appeal if Chamba declines my request?
+            </div>
+            <div class="dropdown-content">
+                <p>Yes, you can appeal our decision within 30 days of receiving our response. We will respond to your appeal within 60 days.</p>
+            </div>
+        </div>
 
-        <h3>Can an authorized agent submit a request on my behalf?</h3>
-        <p>Yes, you can authorize someone to make a request on your behalf. The authorized agent must provide:</p>
-        <ul>
-            <li>Written permission from you</li>
-            <li>Verification of their identity</li>
-            <li>Verification of your identity</li>
-        </ul>
-
-        <h3>Can I submit an appeal if Chamba declines my request?</h3>
-        <p>Yes, you can appeal our decision within 30 days of receiving our response. We will respond to your appeal within 60 days.</p>
-
-        <h3>Does Chamba use de-identified data?</h3>
-        <p>We may de-identify your personal information and use it for:</p>
-        <ul>
-            <li>Product research and development</li>
-            <li>Service improvement</li>
-            <li>Analytics and reporting</li>
-        </ul>
-        <p>We will not attempt to re-identify any individual while using de-identified information.</p>
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                Does Chamba use de-identified data?
+            </div>
+            <div class="dropdown-content">
+                <p>We may de-identify your personal information and use it for:</p>
+                <ul>
+                    <li>Product research and development</li>
+                    <li>Service improvement</li>
+                    <li>Analytics and reporting</li>
+                </ul>
+                <p>We will not attempt to re-identify any individual while using de-identified information.</p>
+            </div>
+        </div>
     </div>
 
     <div class="section">
@@ -172,7 +242,7 @@
     <div class="contact">
         <h2>Contact Us</h2>
         <p>If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us at:</p>
-        <p>Email: support@chamba.app</p>
+        <p>Email: chambaserviceapp@gmail.com</p>
         <p>We will respond to your request within 30 days.</p>
     </div>
 </body>
